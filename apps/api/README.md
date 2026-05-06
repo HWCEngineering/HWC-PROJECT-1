@@ -86,11 +86,20 @@ See `env.example` for template.
 
 ## Local Development
 
+Requires Python 3.11+.
+
 ```bash
 cd apps/api
-pip install fastapi "uvicorn[standard]" pydantic-settings python-dotenv azure-storage-blob motor pymongo laspy laszip numpy scipy ezdxf pyproj open3d pdal shapely matplotlib pandas geopandas lxml python-multipart aiofiles
+python -m venv .venv
+source .venv/bin/activate   # Windows: .venv\Scripts\activate
+pip install -e .            # installs all deps from pyproject.toml
+cp env.example .env         # fill in connection strings
 uvicorn app.main:app --reload
 ```
+
+API runs at `http://localhost:8000`. Interactive docs at `http://localhost:8000/docs`.
+
+> **Note**: The `pyproject.toml` is the single source of truth for dependencies. Don't install packages individually — use `pip install -e .` to get everything.
 
 ## Deployment
 
