@@ -64,7 +64,7 @@ az cosmosdb create \
 
 # Container App Environment
 az containerapp env create \
-  --name my-projects-env \
+  --name LiDAR-CONTAINER \
   --resource-group $RG \
   --location $LOCATION
 
@@ -162,7 +162,7 @@ To add a staging environment, duplicate the workflow with different Azure resour
 | Min replicas | 0 (scales to zero when idle — cold starts ~10s) |
 | Max replicas | 3 |
 | Ingress | External, port 8000 |
-| Environment | `my-projects-env` |
+| Environment | `LiDAR-CONTAINER` |
 
 **Note**: `min-replicas: 0` means the first request after idle will have a cold start. If latency matters, set to 1.
 
