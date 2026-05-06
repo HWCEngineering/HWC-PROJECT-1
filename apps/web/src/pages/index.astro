@@ -1,0 +1,17 @@
+---
+import '../styles/global.css';
+import { BreaklineApp } from '../components/breakline/BreaklineApp';
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/png" href="/tools/breakline-gen/assets/hwc-map-icon.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content={Astro.generator} />
+    <title>HWC Engineering | LiDAR Breakline Generator</title>
+  </head>
+  <body>
+    <BreaklineApp client:load />
+  </body>
+</html>
