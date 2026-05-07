@@ -10,7 +10,7 @@ env:
   IMAGE_NAME: ${{ github.repository_owner }}/hwc-breakline-gen-api
   CONTAINER_NAME: hwc-breakline-gen-api
   CONTAINER_APP_ENV: LiDAR-CONTAINER
-  LOCATION: eastus
+  LOCATION: eastus2
 
 jobs:
   deploy-api:
@@ -114,6 +114,13 @@ jobs:
                 NAME="${{ vars.NAME }}" \
                 AZURE_CONNECTION_STRING="${{ secrets.AZURE_CONNECTION_STRING }}"
           fi
+
+      - name: Set ingress body size limit
+        run: |
+          az containerapp ingress update \
+            --name "${{ env.CONTAINER_NAME }}" \
+            --resource-group "${{ secrets.AZURE_RESOURCE_GROUP }}" \
+            --client-max-body-size 10737418240
 
       - name: Capture API URL
         id: capture-url
