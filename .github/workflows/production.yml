@@ -9,7 +9,7 @@ env:
   REGISTRY: ghcr.io
   IMAGE_NAME: ${{ github.repository_owner }}/hwc-breakline-gen-api
   CONTAINER_NAME: hwc-breakline-gen-api
-  CONTAINER_APP_ENV: my-projects-env
+  CONTAINER_APP_ENV: LiDAR-CONTAINER
   LOCATION: eastus
 
 jobs:
