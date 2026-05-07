@@ -120,7 +120,7 @@ jobs:
           az containerapp ingress update \
             --name "${{ env.CONTAINER_NAME }}" \
             --resource-group "${{ secrets.AZURE_RESOURCE_GROUP }}" \
-            --client-max-body-size 10737418240
+            --set-max-request-body-size 10240
 
       - name: Capture API URL
         id: capture-url
