@@ -160,7 +160,10 @@ jobs:
         with:
           azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN }}
           action: "upload"
+          ###### Repository/Build Configurations ######
           app_location: "apps/web"
           output_location: "dist"
           build_location: "dist"
           skip_app_build: true
+          app_build_command: "npm run build" # Let Azure build it
+          ###### End of Repository/Build Configurations ######
