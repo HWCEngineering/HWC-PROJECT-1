@@ -200,8 +200,6 @@ class StorageService:
             logger.error(f"Failed to delete files for job {job_id}: {str(e)}")
             raise StorageException("job files deletion", str(e))
     
-    
-    
     def generate_download_url(
         self,
         blob_name: str,
