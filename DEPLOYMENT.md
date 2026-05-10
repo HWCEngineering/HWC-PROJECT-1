@@ -37,7 +37,7 @@ This document covers how the HWC Breakline Generator is deployed and how to set 
 ```bash
 # Variables
 RG="your-resource-group"
-LOCATION="eastus"
+LOCATION="eastus2"
 NAME="hwc-breakline-generator"
 
 # Resource group
