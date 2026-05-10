@@ -1,6 +1,31 @@
 # Changelog
 
-## Recent Updates
+## [Unreleased] — dev branch
+
+### Added
+- 10ft grid spacing option for higher-detail breakline extraction
+- 0.05 minimum threshold for finer gradient detection
+- `CONTRIBUTING.md` — branching workflow, local setup, code style
+- `DEPLOYMENT.md` — Azure infrastructure setup, pipeline docs, troubleshooting
+- Separate CI/CD workflows: `dev.yml` (validation) and `production.yml` (deploy)
+- Branching strategy: `dev` (default) → `main` (production deploy)
+
+### Changed
+- Migrated container registry from Docker Hub to GHCR (ghcr.io)
+- Container App Environment renamed to `LiDAR-CONTAINER`
+- Azure region changed to `eastus2`
+- Build script now runs `assets:sync` before frontend build
+- API local dev docs updated to use `pip install -e .` with venv
+- Threshold slider range extended from 0.1–0.3 to 0.05–0.3
+- Removed `skip_app_build` from Static Web Apps deploy (SWA handles build)
+
+### Removed
+- Old unified `Fullstack Workflow.yml` (replaced by dev/prod split)
+- Docker Hub secrets (`DOCKERHUB_USERNAME` / `DOCKERHUB_TOKEN`)
+
+---
+
+## Previous Updates
 
 ### Free Satellite Imagery (No API Key Required)
 - **Changed**: Both 2D and 3D modes now use free ESRI World Imagery by default
