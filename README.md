@@ -1,6 +1,31 @@
 # HWC Breakline Generator
 
-Monorepo for the HWC LiDAR surface/breakline generation platform.
+Web-based tool for extracting surface breaklines from statewide LiDAR point cloud data. Built for civil engineers and surveyors who need CAD-ready breakline files without manual processing.
+
+## What It Does
+
+Users upload raw LiDAR files (LAS/LAZ), configure processing parameters (grid spacing, gradient threshold, coordinate system), and receive DXF and CSV outputs containing extracted breaklines — the lines where terrain changes slope (road edges, ditches, ridgelines, embankments).
+
+```
+Upload LAS/LAZ → Configure → Process → Preview → Download DXF/CSV
+```
+
+The processing pipeline:
+1. Filters ground-classified points (LAS classification 2)
+2. Downsamples via voxel grid (10ft, 25ft, or 50ft spacing)
+3. Builds Delaunay triangulation
+4. Extracts edges where elevation gradient exceeds threshold
+5. Exports breakline polylines to DXF and point data to CSV
+
+Jobs run asynchronously — upload returns immediately, processing happens in the background, and results are available for download (24-hour retention).
+
+## Tech Stack
+
+- **API**: Python/FastAPI, Open3D, SciPy, laspy, ezdxf
+- **Frontend**: Astro + React (single-page app)
+- **Storage**: Azure Blob Storage (file I/O) + Cosmos DB/MongoDB (job state)
+- **Hosting**: Azure Container Apps (API) + Azure Static Web Apps (frontend)
+- **CI/CD**: GitHub Actions → GHCR → Azure
 
 ## Structure
 
