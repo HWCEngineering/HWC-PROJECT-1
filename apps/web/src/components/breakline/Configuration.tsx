@@ -4,6 +4,7 @@ import type { ProcessingConfig, EPSGOption } from '../../types';
 import epsgData from '../../data/epsg/Indiana.json';
 
 const GRID_OPTIONS = [
+  { label: '10 feet', value: 10 },
   { label: '25 feet', value: 25 },
   { label: '50 feet', value: 50 },
 ];
@@ -45,7 +46,7 @@ export function Configuration({ config, onConfigChange, onProcess, isProcessing,
   const toggleFormat = (v: string) =>
     setFormats((prev) => (prev.includes(v) ? prev.filter((f) => f !== v) : [...prev, v]));
 
-  const pct = ((threshold - 0.1) / 0.2) * 100;
+  const pct = ((threshold - 0.05) / 0.25) * 100;
 
   return (
     <div className="bl-card">
@@ -70,20 +71,20 @@ export function Configuration({ config, onConfigChange, onProcess, isProcessing,
       <div className="bl-field-group">
         <label className="bl-field-label">Breakline Threshold</label>
         <input
-          type="range" min={0.1} max={0.3} step={0.01} value={threshold}
+          type="range" min={0.05} max={0.3} step={0.01} value={threshold}
           className="bl-slider-track"
           style={{ background: `linear-gradient(to right, var(--accent) ${pct}%, #e5e7eb ${pct}%)` }}
           onChange={(e) => setThreshold(parseFloat(e.target.value))}
         />
-        <div className="bl-slider-labels"><span>0.1</span><span>0.2</span><span>0.3</span></div>
+        <div className="bl-slider-labels"><span>0.05</span><span>0.15</span><span>0.3</span></div>
         <div className="bl-slider-value">
           <span>Current Value:</span>
           <span>{threshold.toFixed(2)}</span>
         </div>
         <div className="bl-help">
           <p><strong>Breakline Threshold:</strong> Controls the level of detail in generated breaklines</p>
-          <p>• <strong>Lower values (0.1):</strong> Larger file size, greater definition</p>
-          <p>• <strong>Higher values (0.3):</strong> Smaller file size, reduced definition</p>
+          <p>• <strong>Lower values (0.05):</strong> Larger file size, greater definition, longer processing</p>
+          <p>• <strong>Higher values (0.3):</strong> Smaller file size, reduced definition, faster processing</p>
           <p className="accent"><strong>Default: 0.1 (recommended for most use cases)</strong></p>
         </div>
       </div>

@@ -30,7 +30,7 @@ router = APIRouter(prefix="/upload", tags=["Upload"])
 async def upload_files(
     files: List[UploadFile] = File(..., description="LAS/LAZ files to process"),
     voxel_size: Optional[int] = Form(None, ge=1, le=100),
-    threshold: Optional[float] = Form(None, ge=0.1, le=5.0),
+    threshold: Optional[float] = Form(None, ge=0.05, le=5.0),
     nth_point: Optional[int] = Form(None, ge=1, le=100),
     source_epsg: Optional[int] = Form(None, ge=1000, le=99999),
     target_epsg: Optional[int] = Form(None, ge=1000, le=99999),

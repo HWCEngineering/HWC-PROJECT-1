@@ -75,7 +75,7 @@ class Settings(BaseSettings):
     # ── Processing defaults ────────────────────────────────────────────
 
     default_voxel_size: int = Field(default=25, ge=1, le=100)
-    default_threshold: float = Field(default=0.5, ge=0.1, le=5.0)
+    default_threshold: float = Field(default=0.5, ge=0.05, le=5.0)
     default_nth_point: int = Field(default=1, ge=1)
 
     # ── Server ─────────────────────────────────────────────────────────

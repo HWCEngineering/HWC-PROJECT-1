@@ -11,14 +11,18 @@ class ProcessingParameters(BaseModel):
     
     voxel_size: int = Field(
         default=25,
-        description="Voxel size for downsampling",
+        description="Voxel size for downsampling in feet. Lower values retain more points "
+                    "but increase processing time and output size significantly. "
+                    "10ft produces ~6x more points than 25ft.",
         ge=1,
         le=100
     )
     threshold: float = Field(
         default=0.5,
-        description="Gradient threshold for breakline detection",
-        ge=0.1,
+        description="Gradient threshold for breakline detection (dz/horizontal_distance). "
+                    "Lower values detect subtler slope changes, producing more breaklines "
+                    "and larger output files. 0.05 is high-detail, 0.3 is coarse.",
+        ge=0.05,
         le=5.0
     )
     nth_point: int = Field(
